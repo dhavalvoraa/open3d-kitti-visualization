@@ -88,5 +88,6 @@ class PointCloudVis:
 		[vis.add_geometry(element) for element in boxes_o3d]
 
 		vis.get_render_option().point_size = 2
+		vis.get_render_option().background_color = np.asarray([0, 0, 0])
 		vis.run()
 		vis.destroy_window()
