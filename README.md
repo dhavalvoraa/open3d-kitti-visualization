@@ -34,10 +34,10 @@ Download KITTI dataset and create some directories first:
 
 ## Demo
 ```
-$ python visiualize.py
+$ python visualize.py
 ```
 
-If you has your own data path, you  can run like this:
+If you has your own data path, you can run like this:
 ```
-$ python visiualize.py --data=KITTI_DATASET_ROOT --frame=500
+$ python visualize.py --data=KITTI_DATASET_ROOT --frame=500
 ```

@@ -1,7 +1,7 @@
 
 import numpy as np
 import open3d as o3d
-
+from scipy.spatial.transform import Rotation as R
 
 def vector_magnitude(vec):
 	"""
@@ -78,8 +78,10 @@ def create_arrow(origin=[0,0,0],end=None,color = None, vec=None):
 		gamma,beta = calculate_zy_rotation_for_arrow(vec)
 	mesh = get_arrow(scale)
 	# mesh.transform(T)
-	mesh.rotate([0,beta,0],center=False)
-	mesh.rotate([0,0,gamma],center=False)
+
+	rot_matrix = R.from_euler('xyz', [0,0,gamma]).as_matrix()
+	mesh.rotate(rot_matrix, center=np.array([[0,0], [0,0], [0,0]]))
+
 	mesh.translate(origin)
 
 	# add color
