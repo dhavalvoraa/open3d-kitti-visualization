@@ -79,8 +79,11 @@ def create_arrow(origin=[0,0,0],end=None,color = None, vec=None):
 	mesh = get_arrow(scale)
 	# mesh.transform(T)
 
-	rot_matrix = R.from_euler('xyz', [0,0,gamma]).as_matrix()
-	mesh.rotate(rot_matrix, center=np.array([[0,0], [0,0], [0,0]]))
+	beta_rotation = R.from_euler('xyz', [0,beta,0]).as_matrix()
+	mesh.rotate(beta_rotation, center=mesh.get_center())
+
+	gamma_rotation = R.from_euler('xyz', [0,0,gamma]).as_matrix()
+	mesh.rotate(gamma_rotation, center=mesh.get_center())
 
 	mesh.translate(origin)
 
